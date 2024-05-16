@@ -30,7 +30,7 @@ model.compile(optimizer='adam',
 model.fit(training_images, training_labels, epochs=5, validation_data=(testing_images, testing_labels))
 
 # Now, you can use the trained model to make predictions
-img = cv.imread('car.png')
+img = cv.imread('truck.png')
 img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
 img = cv.resize(img, (32, 32)) / 255.0  # Resize and normalize the image
 
