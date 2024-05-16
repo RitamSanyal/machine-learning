@@ -1,0 +1,56 @@
+import pandas as pd
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Load dataset
+data = pd.read_csv('student-mat.csv')
+
+# Display the first few rows
+print(data.head())
+
+# Select relevant features and target variable
+# Here we choose a subset of columns that could be relevant for prediction
+# You might need to adjust the columns based on exploratory data analysis
+
+# features er ei gulor value dataset a already ache, egulo theke predict kore g3(grade3) er value ta predict korche,
+# je g3 te ei 5 ta value ki ki hobe
+features = ['studytime', 'failures', 'absences', 'G1', 'G2']
+# features er ei gulor value dataset a already ache, egulo theke predict kore g3(grade3) er value ta predict korche,
+# je g3 te ei 5 ta value ki ki hobe
+
+target = 'G3'
+
+X = data[features]
+y = data[target]
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Standardize the features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Build the neural network model
+model = Sequential()
+model.add(Dense(32, activation='relu'))
+model.add(Dense(16, activation='relu'))
+model.add(Dense(1))  # Regression output
+
+# Compile the model
+model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
+
+# Train the model
+model.fit(X_train, y_train, epochs=419, batch_size=10, validation_split=0.2)
+
+# Evaluate the model
+loss, mae = model.evaluate(X_test, y_test)
+print(f'Mean Absolute Error on Test Set: {mae}')
+
+# Make predictions
+predictions = model.predict(X_test)
+
+# Display the first few predictions
+print(predictions[:5])
