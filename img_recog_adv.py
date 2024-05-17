@@ -48,10 +48,10 @@ model = models.Sequential([
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # Train the model with data augmentation
-model.fit(training_generator, epochs=5, validation_data=validation_generator)  # Use validation generator
+model.fit(training_generator, epochs=50, validation_data=validation_generator)  # Use validation generator
 
 # Now you can use the trained model to make predictions
-img = cv.imread('truck.png')
+img = cv.imread('dog.png')
 img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
 img = cv.resize(img, (32, 32)) / 255.0  # Resize and normalize the image
 
