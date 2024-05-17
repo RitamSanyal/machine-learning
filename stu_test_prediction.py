@@ -43,7 +43,7 @@ model.add(Dense(1))  # Regression output
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
 
 # Train the model
-model.fit(X_train, y_train, epochs=200, batch_size=10, validation_split=0.2)
+model.fit(X_train, y_train, epochs=300, batch_size=10, validation_split=0.2)
 
 # Evaluate the model
 loss, mae = model.evaluate(X_test, y_test)
@@ -55,5 +55,5 @@ predictions = model.predict(X_test)
 # Display the first few predictions
 print(predictions[:5])
 
-model.save('model_test_prediction.h5')
+model.save('stu_model.keras')
 print("file saved successfully")
