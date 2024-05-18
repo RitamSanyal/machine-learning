@@ -65,3 +65,6 @@ index = np.argmax(prediction)
 class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'trucks']
 
 print(f'Predicted class: {class_names[index]}')
+
+model.save('adv_img_pred.keras')
+print("file saved successfully")
