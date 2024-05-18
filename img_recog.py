@@ -22,9 +22,7 @@ model = models.Sequential([
 ])
 
 # Compile the model
-model.compile(optimizer='adam',
-              loss='sparse_categorical_crossentropy',
-              metrics=['accuracy'])
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # Train the model
 model.fit(training_images, training_labels, epochs=5, validation_data=(testing_images, testing_labels))
