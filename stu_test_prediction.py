@@ -35,15 +35,15 @@ X_test = scaler.transform(X_test)
 
 # Build the neural network model
 model = Sequential()
-model.add(Dense(32, activation='relu'))
-model.add(Dense(16, activation='relu'))
+model.add(Dense(32, activation='leaky_relu'))
+model.add(Dense(16, activation='leaky_relu'))
 model.add(Dense(1))  # Regression output
 
 # Compile the model
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
 
 # Train the model
-model.fit(X_train, y_train, epochs=300, batch_size=10, validation_split=0.2)
+model.fit(X_train, y_train, epochs=1300, batch_size=10, validation_split=0.2)
 
 # Evaluate the model
 loss, mae = model.evaluate(X_test, y_test)
