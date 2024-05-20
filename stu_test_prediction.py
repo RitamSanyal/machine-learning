@@ -3,6 +3,7 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+import numpy as np
 
 # Load dataset
 data = pd.read_csv('student-mat.csv')
@@ -43,7 +44,7 @@ model.add(Dense(1))  # Regression output
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
 
 # Train the model
-model.fit(X_train, y_train, epochs=1300, batch_size=10, validation_split=0.2)
+model.fit(X_train, y_train, epochs=99, batch_size=10, validation_split=0.2)
 
 # Evaluate the model
 loss, mae = model.evaluate(X_test, y_test)
