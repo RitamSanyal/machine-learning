@@ -3,7 +3,6 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-import numpy as np
 
 # Load dataset
 data = pd.read_csv('student-mat.csv')
