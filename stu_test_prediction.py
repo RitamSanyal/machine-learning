@@ -1,6 +1,6 @@
 import pandas as pd
 from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense,Dropout
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
@@ -35,15 +35,24 @@ X_test = scaler.transform(X_test)
 
 # Build the neural network model
 model = Sequential()
-model.add(Dense(32, activation='leaky_relu'))
-model.add(Dense(16, activation='leaky_relu'))
-model.add(Dense(1))  # Regression output
+model.add(Dense(64, activation='leaky_relu', input_dim=5))  # Input layer with 64 neurons
+model.add(Dropout(0.2))  # Dropout layer to prevent overfitting
+model.add(Dense(128, activation='leaky_relu'))  # Hidden layer with 128 neurons
+model.add(Dropout(0.2))
+model.add(Dense(256, activation='leaky_relu'))  # Hidden layer with 256 neurons
+model.add(Dropout(0.2))
+model.add(Dense(128, activation='leaky_relu'))  # Hidden layer with 128 neurons
+model.add(Dropout(0.2))
+model.add(Dense(64, activation='leaky_relu'))  # Hidden layer with 64 neurons
+model.add(Dropout(0.2))
+model.add(Dense(32, activation='leaky_relu'))  # Hidden layer with 32 neurons
+model.add(Dense(1))  # Output layer with 1 neuron for regression output
 
 # Compile the model
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
 
 # Train the model
-model.fit(X_train, y_train, epochs=99, batch_size=10, validation_split=0.2)
+model.fit(X_train, y_train, epochs=500, batch_size=10, validation_split=0.2)
 
 # Evaluate the model
 loss, mae = model.evaluate(X_test, y_test)
