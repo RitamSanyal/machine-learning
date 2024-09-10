@@ -22,8 +22,13 @@ def load_and_encode_known_faces(known_faces_paths):
 
     return known_face_encodings, known_face_names
 
+
 known_faces_paths = {
-    "Ritam": "/home/ritam/PycharmProjects/machine-learning/Ritam.jpeg"
+    "Ritam": '/home/ritam/PycharmProjects/machine-learning/Ritam.jpeg',
+    "Ankan": '/home/ritam/PycharmProjects/machine-learning/Ankan.jpeg',
+    "Arijit": '/home/ritam/PycharmProjects/machine-learning/Arijit.jpeg',
+    "Arkadeep": '/home/ritam/PycharmProjects/machine-learning/Arka.jpeg',
+    "Arunansha": '/home/ritam/PycharmProjects/machine-learning/Arunansha.jpeg'
 }
 
 known_face_encodings, known_face_names = load_and_encode_known_faces(known_faces_paths)
@@ -68,17 +73,18 @@ def live_face_recognition(known_face_encodings, known_face_names):
             face_names.append(name)
 
         for (top, right, bottom, left), name in zip(face_locations, face_names):
-            cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
+            cv2.rectangle(frame, (left, top), (right, bottom), (7, 166, 7), 2)
 
-            cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 255, 30), cv2.FILLED)
+            cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (7, 166, 7), cv2.FILLED)
             cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 1)
 
         cv2.imshow('Webcam Face Recognition', frame)
 
-        if cv2.waitKey(1) & 0xFF == ord('q'): # Press 'q' to quit
+        if cv2.waitKey(1) & 0xFF == ord('q'):  # Press 'q' to quit
             break
 
     video_capture.release()
     cv2.destroyAllWindows()
+
 
 live_face_recognition(known_face_encodings, known_face_names)
