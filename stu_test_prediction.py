@@ -1,11 +1,11 @@
 import pandas as pd
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Dense,Dropout
+from keras import Sequential
+from keras._tf_keras.keras.layers import Dense,Dropout
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # Load dataset
-data = pd.read_csv('student-mat.csv')
+data = pd.read_csv('/home/ritam/Documents/LocalCodes/machine-learning/student-mat.csv')
 
 # Display the first few rows
 print(data.head())
