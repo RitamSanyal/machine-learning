@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # Load dataset
-data = pd.read_csv('/home/ritam/Documents/LocalCodes/machine-learning/student-mat.csv')
+data = pd.read_csv('/home/ritam/Documents/LocalCodes/machine-learning/StudentPerformanceFactors.csv')
 
 # Display the first few rows
 print(data.head())
@@ -16,11 +16,11 @@ print(data.head())
 
 # features er ei gulor value dataset a already ache, egulo theke predict kore g3(grade3) er value ta predict korche,
 # je g3 te ei 5 ta value ki ki hobe
-features = ['studytime', 'failures', 'absences', 'G1', 'G2']
+features = ['Hours_Studied', 'Sleep_Hours', 'Attendance', 'Previous_Scores', 'Exam_Score']
 # features er ei gulor value dataset a already ache, egulo theke predict kore g3(grade3) er value ta predict korche,
 # je g3 te ei 5 ta value ki ki hobe
 
-target = 'G3'
+target = 'Exam_Score'
 
 X = data[features]
 y = data[target]

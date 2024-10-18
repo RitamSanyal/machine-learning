@@ -1,13 +1,13 @@
 from sklearn.preprocessing import StandardScaler
-from tensorflow.keras.models import load_model
+from keras._tf_keras.keras.models import load_model
 import pandas as pd
 
 # Load the pre-trained model
 model = load_model('stu_model.keras')
 
 # Load the training data to get the scaler
-data = pd.read_csv('student-mat.csv')
-features = ['studytime', 'failures', 'absences', 'G1', 'G2']
+data = pd.read_csv('/home/ritam/Documents/LocalCodes/machine-learning/StudentPerformanceFactors.csv')
+features = ['Hours_Studied', 'Sleep_Hours', 'Attendance', 'Previous_Scores', 'Exam_Score']
 X_train = data[features]
 
 # Fit the scaler on the training data
@@ -22,12 +22,12 @@ def scale_user_input(user_input, scaler):
 
 
 def get_user_input():
-    study_time = float(input("Enter study time: "))
-    failures = int(input("Enter number of failures: "))
-    absences = int(input("Enter number of absences: "))
-    G1 = float(input("Enter previous grade 1 (G1): "))
-    G2 = float(input("Enter previous grade 2 (G2): "))
-    return [study_time, failures, absences, G1, G2]
+    Hours_Studied = float(input("Enter study time: "))
+    Sleep_Hours = int(input("Enter number of Sleep_Hours: "))
+    Attendance = int(input("Enter number of Attendance: "))
+    Attendance = float(input("Enter previous grade 1 (G1): "))
+    Exam_Score = float(input("Enter previous grade 2 (G2): "))
+    return [Hours_Studied, Sleep_Hours, Attendance, Attendance, Exam_Score]
 
 
 # Get user input
