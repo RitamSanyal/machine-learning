@@ -6,7 +6,7 @@ import pandas as pd
 model = load_model('stu_model.keras')
 
 # Load the training data to get the scaler
-data = pd.read_csv('/home/ritam/Documents/LocalCodes/machine-learning/StudentPerformanceFactors.csv')
+data = pd.read_csv('StudentPerformanceFactors.csv')
 features = ['Hours_Studied', 'Sleep_Hours', 'Attendance', 'Previous_Scores', 'Exam_Score']
 X_train = data[features]
 

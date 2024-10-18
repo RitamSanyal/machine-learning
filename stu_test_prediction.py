@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # Load dataset
-data = pd.read_csv('/home/ritam/Documents/LocalCodes/machine-learning/StudentPerformanceFactors.csv')
+data = pd.read_csv('StudentPerformanceFactors.csv')
 
 # Display the first few rows
 print(data.head())
