@@ -7,7 +7,7 @@ model = load_model('stu_model.keras')
 
 # Load the training data to get the scaler
 data = pd.read_csv('StudentPerformanceFactors.csv')
-features = ['Hours_Studied', 'Sleep_Hours', 'Attendance', 'Previous_Scores', 'Exam_Score']
+features = ['Hours_Studied', 'Sleep_Hours', 'Attendance', 'Previous_Scores']
 X_train = data[features]
 
 # Fit the scaler on the training data
@@ -26,8 +26,8 @@ def get_user_input():
     Sleep_Hours = int(input("Enter number of Sleep_Hours: "))
     Attendance = int(input("Enter number of Attendance: "))
     Attendance = float(input("Enter previous grade 1 (G1): "))
-    Exam_Score = float(input("Enter previous grade 2 (G2): "))
-    return [Hours_Studied, Sleep_Hours, Attendance, Attendance, Exam_Score]
+    # Exam_Score = float(input("Enter previous grade 2 (G2): "))
+    return [Hours_Studied, Sleep_Hours, Attendance, Attendance]
 
 
 # Get user input
