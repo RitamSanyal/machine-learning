@@ -7,7 +7,7 @@ model = load_model('stu_model.keras')
 
 # Load the training data to get the scaler
 data = pd.read_csv('StudentPerformanceFactors.csv')
-features = ['Hours_Studied', 'Sleep_Hours', 'Attendance', 'Previous_Scores']
+features = ['Hours_Studied',  'Attendance', 'Sleep_Hours', 'Previous_Scores', 'Tutoring_Sessions', 'Physical_Activity']
 X_train = data[features]
 
 # Fit the scaler on the training data
@@ -22,12 +22,21 @@ def scale_user_input(user_input, scaler):
 
 
 def get_user_input():
+    print("\n")
+    print("\t" + "*" * 50)
+    print("\t" + "*" + " " * 48 + "*")
+    print("\t" + "*" + "\033[92m" + " Enter a value below ".center(48, " ") + "\033[0m" + "*")
+    print("\t" + "*" + " " * 48 + "*")
+    print("\t" + "*" * 50)
+    print("\n")
     Hours_Studied = float(input("Enter study time: "))
-    Sleep_Hours = int(input("Enter number of Sleep_Hours: "))
     Attendance = int(input("Enter number of Attendance: "))
-    Attendance = float(input("Enter previous grade 1 (G1): "))
+    Sleep_Hours = int(input("Enter number of Sleep_Hours: "))
+    Previous_Scores = float(input("Enter Previous_Scores: "))
+    Tutoring_Sessions = int(input("Enter number of Tutoring_Sessions: "))
+    Physical_Activity =  int(input("Enter number of Physical_Activity: "))
     # Exam_Score = float(input("Enter previous grade 2 (G2): "))
-    return [Hours_Studied, Sleep_Hours, Attendance, Attendance]
+    return [Hours_Studied, Attendance, Sleep_Hours, Previous_Scores, Tutoring_Sessions, Physical_Activity]
 
 
 # Get user input

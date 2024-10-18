@@ -16,7 +16,7 @@ print(data.head())
 
 # features er ei gulor value dataset a already ache, egulo theke predict kore g3(grade3) er value ta predict korche,
 # je g3 te ei 5 ta value ki ki hobe
-features = ['Hours_Studied', 'Sleep_Hours', 'Attendance', 'Previous_Scores']
+features = ['Hours_Studied',  'Attendance', 'Sleep_Hours', 'Previous_Scores', 'Tutoring_Sessions', 'Physical_Activity']
 # features er ei gulor value dataset a already ache, egulo theke predict kore g3(grade3) er value ta predict korche,
 # je g3 te ei 5 ta value ki ki hobe
 
@@ -35,7 +35,7 @@ X_test = scaler.transform(X_test)
 
 # Build the neural network model
 model = Sequential()
-model.add(Dense(64, activation='leaky_relu', input_dim=4))  # Input layer with 64 neurons
+model.add(Dense(64, activation='leaky_relu', input_dim=6))  # Input layer with 64 neurons
 model.add(Dropout(0.2))  # Dropout layer to prevent overfitting
 model.add(Dense(128, activation='leaky_relu'))  # Hidden layer with 128 neurons
 model.add(Dropout(0.2))
@@ -52,7 +52,7 @@ model.add(Dense(1))  # Output layer with 1 neuron for regression output
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
 
 # Train the model
-model.fit(X_train, y_train, epochs=1000, batch_size=10, validation_split=0.2)
+model.fit(X_train, y_train, epochs=500, batch_size=10, validation_split=0.2)
 
 # Evaluate the model
 loss, mae = model.evaluate(X_test, y_test)
