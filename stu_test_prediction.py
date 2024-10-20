@@ -93,7 +93,6 @@ model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolu
 # -----------------------------------------------------------------------------------------------------
 # Train the model
 # model.fit(X_train, y_train, epochs=500, batch_size=10, validation_split=0.2)
-import time
 from tqdm import tqdm
 from colorama import Fore, Back, Style, init
 from keras._tf_keras.keras.callbacks import Callback
