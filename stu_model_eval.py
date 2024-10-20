@@ -2,6 +2,7 @@ from sklearn.preprocessing import StandardScaler
 from keras._tf_keras.keras.models import load_model
 import pandas as pd
 
+
 # Load the pre-trained model
 model = load_model('stu_model.keras')
 
